@@ -1,9 +1,11 @@
 import { Router } from 'express';
+import { getAllUsers, getUser } from '../controllers/user.controller.js';
+import authorize from '../middlewares/auth.middleware.js';
 
 const userRouter = Router();
 
-userRouter.get('/', (req,res)=> res.send({title: 'GET all users.'}));
-userRouter.get('/:id', (req,res)=> res.send({title: 'GET user.'}));
+userRouter.get('/', getAllUsers);
+userRouter.get('/:id',authorize, getUser);
 userRouter.post('/', (req,res)=> res.send({title: 'CREATE user.'}));
 userRouter.put('/', (req,res)=> res.send({title: 'UPDATE user.'}));
 userRouter.delete('/', (req,res)=> res.send({title: 'DELETE user.'}));

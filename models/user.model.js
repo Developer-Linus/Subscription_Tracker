@@ -16,7 +16,7 @@ const userSchema = new mongoose.Schema(
       lowercase: true,
       trim: true,
       minLength: [3, "Email must be at least 3 characters long"],
-      maxLength: [255, "Email must be at most 50 characters long"],
+      maxLength: [255, "Email must be at most 255 characters long"],
       match: [
         /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
         "Please provide a valid email",
@@ -26,7 +26,6 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: [true, "Password is required"],
       minLength: [6, "Password must be at least 6 characters long"],
-      maxLength: [12, "Password must be at most 12 characters long"],
     },
   },
   { timestamps: true } // Used for time for creation and update
